@@ -1,4 +1,4 @@
-module github.com/ol1mov-dev/marketplace/proto
+module github.com/ol1mov-dev/protos
 
 go 1.25
 
