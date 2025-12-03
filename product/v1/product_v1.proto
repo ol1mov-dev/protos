@@ -1,0 +1,95 @@
+syntax = "proto3";
+package product.v1;
+
+option go_package = "pkg/product/product_v1;productv1";
+
+message Product {
+    int32   id                  = 1;
+    string  name                = 2;
+    string  sku                 = 3;
+    string  short_description   = 4;
+    string  description         = 5;
+    double  price               = 6;
+    double  price_old           = 7;
+    double  discount            = 8;
+    int32   quantity            = 9;
+    bool    is_active           = 10;
+    string  brand               = 11;
+    double  rating              = 12;
+    int32   category_id         = 13;
+}
+
+// CreateProduct Request and Response
+message CreateProductRequest {
+    string name                 = 1;
+    string  sku                 = 2;
+    string  short_description   = 3;
+    string  description         = 4;
+    double  price               = 5;
+    double  price_old           = 6;
+    double  discount            = 7;
+    int32   quantity            = 8;
+    bool    is_active           = 9;
+    string  brand               = 10;
+    double  rating              = 11;
+    int32   category_id         = 12;
+}
+
+message CreateProductResponse {
+    int32 productId = 1;
+}
+
+// UpdateProduct Request and Response
+message UpdateProductRequest {
+    int32   productId           = 1;
+    string  name                = 2;
+    string  sku                 = 3;
+    string  short_description   = 4;
+    string  description         = 5;
+    double  price               = 6;
+    double  price_old           = 7;
+    double  discount            = 8;
+    int32   quantity            = 9;
+    bool    is_active           = 10;
+    string  brand               = 11;
+    double  rating              = 12;
+    int32   category_id         = 13;
+}
+
+message UpdateProductResponse {
+    int32 productId = 1;
+}
+
+// DeleteProduct Request and Response
+message DeleteProductRequest {
+    int32 productId = 1;
+}
+
+message DeleteProductResponse {
+    int32 productId = 1;
+}
+
+// Get all products
+message GetAllProductsByQueryRequest {
+    string query = 1;
+}
+
+message GetAllProductsByQueryResponse {
+    repeated Product products = 1;
+}
+
+// Get product
+message GetProductRequest {
+  int32 productId = 1;
+}
+
+message GetProductResponse {
+  repeated Product product = 1;
+}
+
+service ProductV1Service {
+  rpc CreateProduct (CreateProductRequest)          returns (CreateProductResponse);
+  rpc GetAllProducts(GetAllProductsByQueryRequest)  returns (GetAllProductsByQueryResponse);
+  rpc UpdateProduct(UpdateProductRequest)           returns (UpdateProductResponse);
+  rpc DeleteProduct(DeleteProductRequest)           returns (DeleteProductResponse);
+}

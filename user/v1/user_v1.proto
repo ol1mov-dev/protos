@@ -64,9 +64,7 @@ message DeleteUserResponse {
   bool success = 1;
 }
 
-// ---------------------------
-//         SERVICE
-// ---------------------------
+// SERVICE
 service UserV1Service {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
