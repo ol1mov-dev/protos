@@ -89,7 +89,7 @@ message GetProductResponse {
 
 service ProductV1Service {
   rpc CreateProduct (CreateProductRequest)          returns (CreateProductResponse);
-  rpc GetAllProducts(GetAllProductsByQueryRequest)  returns (GetAllProductsByQueryResponse);
+  rpc GetAllProductsByQuery(GetAllProductsByQueryRequest)  returns (GetAllProductsByQueryResponse);
   rpc UpdateProduct(UpdateProductRequest)           returns (UpdateProductResponse);
   rpc DeleteProduct(DeleteProductRequest)           returns (DeleteProductResponse);
 }

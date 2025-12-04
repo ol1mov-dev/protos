@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProductV1Service_CreateProduct_FullMethodName  = "/product.v1.ProductV1Service/CreateProduct"
-	ProductV1Service_GetAllProducts_FullMethodName = "/product.v1.ProductV1Service/GetAllProducts"
-	ProductV1Service_UpdateProduct_FullMethodName  = "/product.v1.ProductV1Service/UpdateProduct"
-	ProductV1Service_DeleteProduct_FullMethodName  = "/product.v1.ProductV1Service/DeleteProduct"
+	ProductV1Service_CreateProduct_FullMethodName         = "/product.v1.ProductV1Service/CreateProduct"
+	ProductV1Service_GetAllProductsByQuery_FullMethodName = "/product.v1.ProductV1Service/GetAllProductsByQuery"
+	ProductV1Service_UpdateProduct_FullMethodName         = "/product.v1.ProductV1Service/UpdateProduct"
+	ProductV1Service_DeleteProduct_FullMethodName         = "/product.v1.ProductV1Service/DeleteProduct"
 )
 
 // ProductV1ServiceClient is the client API for ProductV1Service service.
@@ -30,7 +30,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProductV1ServiceClient interface {
 	CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error)
-	GetAllProducts(ctx context.Context, in *GetAllProductsByQueryRequest, opts ...grpc.CallOption) (*GetAllProductsByQueryResponse, error)
+	GetAllProductsByQuery(ctx context.Context, in *GetAllProductsByQueryRequest, opts ...grpc.CallOption) (*GetAllProductsByQueryResponse, error)
 	UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*UpdateProductResponse, error)
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*DeleteProductResponse, error)
 }
@@ -53,10 +53,10 @@ func (c *productV1ServiceClient) CreateProduct(ctx context.Context, in *CreatePr
 	return out, nil
 }
 
-func (c *productV1ServiceClient) GetAllProducts(ctx context.Context, in *GetAllProductsByQueryRequest, opts ...grpc.CallOption) (*GetAllProductsByQueryResponse, error) {
+func (c *productV1ServiceClient) GetAllProductsByQuery(ctx context.Context, in *GetAllProductsByQueryRequest, opts ...grpc.CallOption) (*GetAllProductsByQueryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAllProductsByQueryResponse)
-	err := c.cc.Invoke(ctx, ProductV1Service_GetAllProducts_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductV1Service_GetAllProductsByQuery_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func (c *productV1ServiceClient) DeleteProduct(ctx context.Context, in *DeletePr
 // for forward compatibility.
 type ProductV1ServiceServer interface {
 	CreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error)
-	GetAllProducts(context.Context, *GetAllProductsByQueryRequest) (*GetAllProductsByQueryResponse, error)
+	GetAllProductsByQuery(context.Context, *GetAllProductsByQueryRequest) (*GetAllProductsByQueryResponse, error)
 	UpdateProduct(context.Context, *UpdateProductRequest) (*UpdateProductResponse, error)
 	DeleteProduct(context.Context, *DeleteProductRequest) (*DeleteProductResponse, error)
 	mustEmbedUnimplementedProductV1ServiceServer()
@@ -104,8 +104,8 @@ type UnimplementedProductV1ServiceServer struct{}
 func (UnimplementedProductV1ServiceServer) CreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProduct not implemented")
 }
-func (UnimplementedProductV1ServiceServer) GetAllProducts(context.Context, *GetAllProductsByQueryRequest) (*GetAllProductsByQueryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllProducts not implemented")
+func (UnimplementedProductV1ServiceServer) GetAllProductsByQuery(context.Context, *GetAllProductsByQueryRequest) (*GetAllProductsByQueryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllProductsByQuery not implemented")
 }
 func (UnimplementedProductV1ServiceServer) UpdateProduct(context.Context, *UpdateProductRequest) (*UpdateProductResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateProduct not implemented")
@@ -152,20 +152,20 @@ func _ProductV1Service_CreateProduct_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductV1Service_GetAllProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ProductV1Service_GetAllProductsByQuery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAllProductsByQueryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductV1ServiceServer).GetAllProducts(ctx, in)
+		return srv.(ProductV1ServiceServer).GetAllProductsByQuery(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductV1Service_GetAllProducts_FullMethodName,
+		FullMethod: ProductV1Service_GetAllProductsByQuery_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductV1ServiceServer).GetAllProducts(ctx, req.(*GetAllProductsByQueryRequest))
+		return srv.(ProductV1ServiceServer).GetAllProductsByQuery(ctx, req.(*GetAllProductsByQueryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,8 +218,8 @@ var ProductV1Service_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProductV1Service_CreateProduct_Handler,
 		},
 		{
-			MethodName: "GetAllProducts",
-			Handler:    _ProductV1Service_GetAllProducts_Handler,
+			MethodName: "GetAllProductsByQuery",
+			Handler:    _ProductV1Service_GetAllProductsByQuery_Handler,
 		},
 		{
 			MethodName: "UpdateProduct",

@@ -858,10 +858,10 @@ const file_product_v1_proto_rawDesc = "" +
 	"\x11GetProductRequest\x12\x1c\n" +
 	"\tproductId\x18\x01 \x01(\x05R\tproductId\"C\n" +
 	"\x12GetProductResponse\x12-\n" +
-	"\aproduct\x18\x01 \x03(\v2\x13.product.v1.ProductR\aproduct2\xfb\x02\n" +
+	"\aproduct\x18\x01 \x03(\v2\x13.product.v1.ProductR\aproduct2\x82\x03\n" +
 	"\x10ProductV1Service\x12T\n" +
-	"\rCreateProduct\x12 .product.v1.CreateProductRequest\x1a!.product.v1.CreateProductResponse\x12e\n" +
-	"\x0eGetAllProducts\x12(.product.v1.GetAllProductsByQueryRequest\x1a).product.v1.GetAllProductsByQueryResponse\x12T\n" +
+	"\rCreateProduct\x12 .product.v1.CreateProductRequest\x1a!.product.v1.CreateProductResponse\x12l\n" +
+	"\x15GetAllProductsByQuery\x12(.product.v1.GetAllProductsByQueryRequest\x1a).product.v1.GetAllProductsByQueryResponse\x12T\n" +
 	"\rUpdateProduct\x12 .product.v1.UpdateProductRequest\x1a!.product.v1.UpdateProductResponse\x12T\n" +
 	"\rDeleteProduct\x12 .product.v1.DeleteProductRequest\x1a!.product.v1.DeleteProductResponseB\"Z pkg/product/product_v1;productv1b\x06proto3"
 
@@ -895,11 +895,11 @@ var file_product_v1_proto_depIdxs = []int32{
 	0, // 0: product.v1.GetAllProductsByQueryResponse.products:type_name -> product.v1.Product
 	0, // 1: product.v1.GetProductResponse.product:type_name -> product.v1.Product
 	1, // 2: product.v1.ProductV1Service.CreateProduct:input_type -> product.v1.CreateProductRequest
-	7, // 3: product.v1.ProductV1Service.GetAllProducts:input_type -> product.v1.GetAllProductsByQueryRequest
+	7, // 3: product.v1.ProductV1Service.GetAllProductsByQuery:input_type -> product.v1.GetAllProductsByQueryRequest
 	3, // 4: product.v1.ProductV1Service.UpdateProduct:input_type -> product.v1.UpdateProductRequest
 	5, // 5: product.v1.ProductV1Service.DeleteProduct:input_type -> product.v1.DeleteProductRequest
 	2, // 6: product.v1.ProductV1Service.CreateProduct:output_type -> product.v1.CreateProductResponse
-	8, // 7: product.v1.ProductV1Service.GetAllProducts:output_type -> product.v1.GetAllProductsByQueryResponse
+	8, // 7: product.v1.ProductV1Service.GetAllProductsByQuery:output_type -> product.v1.GetAllProductsByQueryResponse
 	4, // 8: product.v1.ProductV1Service.UpdateProduct:output_type -> product.v1.UpdateProductResponse
 	6, // 9: product.v1.ProductV1Service.DeleteProduct:output_type -> product.v1.DeleteProductResponse
 	6, // [6:10] is the sub-list for method output_type
