@@ -1,0 +1,199 @@
+syntax = "proto3";
+package order.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "pkg/order/order_v1;orderv1";
+
+// Статусы заказа
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;  // Не указан
+  ORDER_STATUS_CREATED = 1;      // Заказ создан
+  ORDER_STATUS_PENDING_PAYMENT = 2;  // Ожидает оплаты
+  ORDER_STATUS_PAID = 3;         // Оплачен
+  ORDER_STATUS_PROCESSING = 4;   // В обработке
+  ORDER_STATUS_READY_FOR_SHIPMENT = 5;  // Готов к отгрузке
+  ORDER_STATUS_SHIPPED = 6;      // Отправлен
+  ORDER_STATUS_IN_TRANSIT = 7;   // В пути
+  ORDER_STATUS_OUT_FOR_DELIVERY = 8;  // У курьера
+  ORDER_STATUS_DELIVERED = 9;    // Доставлен
+  ORDER_STATUS_CANCELLED = 10;   // Отменен
+  ORDER_STATUS_REFUNDED = 11;    // Возвращен
+  ORDER_STATUS_FAILED = 12;      // Не удался
+}
+
+// Сообщение для создания заказа
+message CreateOrderRequest {
+  string public_order_number = 1;  // Публичный номер заказа (уникальный)
+  int64 user_id = 2;               // ID пользователя
+  int64 product_id = 3;            // ID товара
+  int32 quantity = 4;              // Количество (должно быть > 0)
+  float total_amount = 5;  // Общая сумма
+  int64 warehouse_id = 6;          // ID склада (опционально)
+  OrderStatus status = 7;          // Статус заказа (по умолчанию CREATED)
+}
+
+// Сообщение для обновления заказа
+message UpdateOrderRequest {
+  int64 id = 1;                    // ID заказа
+  optional string public_order_number = 2;  // Публичный номер заказа
+  optional int64 user_id = 3;      // ID пользователя
+  optional int64 product_id = 4;   // ID товара
+  optional int32 quantity = 5;     // Количество
+  optional float total_amount = 6;  // Общая сумма
+  optional int64 warehouse_id = 7; // ID склада
+  optional OrderStatus status = 8; // Статус заказа
+}
+
+// Основное сообщение заказа
+message Order {
+  int64 id = 1;                    // Уникальный идентификатор
+  string public_order_number = 2;  // Публичный номер заказа
+  int64 user_id = 3;               // ID пользователя
+  int64 product_id = 4;            // ID товара
+  int32 quantity = 5;              // Количество
+  OrderStatus status = 6;          // Текущий статус
+  float total_amount = 7;  // Общая сумма
+  int64 warehouse_id = 8;          // ID склада (может быть 0 если не назначен)
+  google.protobuf.Timestamp created_at = 9;  // Дата создания
+  google.protobuf.Timestamp updated_at = 10; // Дата обновления
+}
+
+// Сообщение для получения заказа по ID
+message GetOrderRequest {
+  oneof identifier {
+    int64 id = 1;                  // ID заказа
+    string public_order_number = 2; // Публичный номер заказа
+  }
+}
+
+// Сообщение для получения заказов по фильтрам
+message ListOrdersRequest {
+  int32 page = 1;                  // Номер страницы
+  int32 limit = 2;                 // Количество элементов на странице
+
+  // Фильтры
+  optional int64 user_id = 3;      // Фильтр по пользователю
+  optional int64 product_id = 4;   // Фильтр по товару
+  optional int64 warehouse_id = 5; // Фильтр по складу
+  repeated OrderStatus statuses = 6; // Фильтр по статусам (можно несколько)
+
+  // Диапазон дат
+  optional google.protobuf.Timestamp created_from = 7;  // Создано с
+  optional google.protobuf.Timestamp created_to = 8;    // Создано по
+
+  // Сортировка
+  enum SortBy {
+    SORT_BY_UNSPECIFIED = 0;
+    SORT_BY_CREATED_AT = 1;        // По дате создания
+    SORT_BY_UPDATED_AT = 2;        // По дате обновления
+    SORT_BY_TOTAL_AMOUNT = 3;      // По сумме заказа
+  }
+
+  enum SortOrder {
+    SORT_ORDER_UNSPECIFIED = 0;
+    SORT_ORDER_ASC = 1;            // По возрастанию
+    SORT_ORDER_DESC = 2;           // По убыванию
+  }
+
+  SortBy sort_by = 9;              // Поле для сортировки
+  SortOrder sort_order = 10;       // Направление сортировки
+}
+
+// Ответ со списком заказов
+message ListOrdersResponse {
+  repeated Order orders = 1;       // Список заказов
+  int32 total_count = 2;           // Общее количество заказов
+  int32 page = 3;                  // Текущая страница
+  int32 total_pages = 4;           // Общее количество страниц
+}
+
+// Сообщение для изменения статуса заказа
+message UpdateOrderStatusRequest {
+  int64 order_id = 1;              // ID заказа
+  OrderStatus new_status = 2;      // Новый статус
+  string reason = 3;               // Причина изменения статуса (для аудита)
+}
+
+// Сообщение для назначения заказу склада
+message AssignWarehouseRequest {
+  int64 order_id = 1;              // ID заказа
+  int64 warehouse_id = 2;          // ID склада для назначения
+}
+
+// Статистика по заказам
+message OrderStats {
+  int32 total_orders = 1;          // Всего заказов
+  float total_revenue = 2;  // Общая выручка
+  map<string, int32> status_counts = 3;  // Количество заказов по статусам
+  map<int64, int32> user_order_counts = 4;  // Количество заказов по пользователям
+}
+
+// Запрос статистики
+message GetStatsRequest {
+  optional google.protobuf.Timestamp start_date = 1;  // Начальная дата
+  optional google.protobuf.Timestamp end_date = 2;    // Конечная дата
+  optional int64 user_id = 3;      // Фильтр по пользователю (опционально)
+  optional int64 warehouse_id = 4; // Фильтр по складу (опционально)
+}
+
+// Сообщение для отмены заказа
+message CancelOrderRequest {
+  int64 order_id = 1;              // ID заказа
+  string cancellation_reason = 2;  // Причина отмены
+}
+
+// История изменений статуса заказа
+message OrderStatusHistory {
+  message StatusChange {
+    OrderStatus old_status = 1;    // Старый статус
+    OrderStatus new_status = 2;    // Новый статус
+    google.protobuf.Timestamp changed_at = 3;  // Время изменения
+    string changed_by = 4;         // Кто изменил (user_id или система)
+    string reason = 5;             // Причина изменения
+  }
+
+  int64 order_id = 1;              // ID заказа
+  repeated StatusChange history = 2;  // История изменений
+}
+
+// Запрос истории статусов
+message GetOrderHistoryRequest {
+  int64 order_id = 1;              // ID заказа
+}
+
+// Пустой ответ
+message EmptyResponse {}
+
+// Сервис для управления заказами
+service OrderService {
+  // Создать новый заказ
+  rpc CreateOrder(CreateOrderRequest) returns (Order);
+
+  // Получить заказ по ID или публичному номеру
+  rpc GetOrder(GetOrderRequest) returns (Order);
+
+  // Обновить информацию о заказе
+  rpc UpdateOrder(UpdateOrderRequest) returns (Order);
+
+  // Получить список заказов с фильтрами и пагинацией
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+
+  // Изменить статус заказа
+  rpc UpdateOrderStatus(UpdateOrderStatusRequest) returns (Order);
+
+  // Назначить заказу склад
+  rpc AssignWarehouse(AssignWarehouseRequest) returns (Order);
+
+  // Отменить заказ
+  rpc CancelOrder(CancelOrderRequest) returns (Order);
+
+  // Получить статистику по заказам
+  rpc GetStats(GetStatsRequest) returns (OrderStats);
+
+  // Получить историю изменений статуса заказа
+  rpc GetOrderHistory(GetOrderHistoryRequest) returns (OrderStatusHistory);
+
+  // Удалить заказ (административная операция)
+  rpc DeleteOrder(GetOrderRequest) returns (EmptyResponse);
+}

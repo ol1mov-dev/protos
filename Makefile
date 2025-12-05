@@ -4,11 +4,20 @@ USER_OUT_DIR=pkg/user/v1
 PRODUCT_PROTO_DIR=product/v1
 PRODUCT_OUT_DIR=pkg/product/v1
 
-.PHONY: proto, clean
+WAREHOUSE_PROTO_DIR=warehouse/v1
+WAREHOUSE_OUT_DIR=pkg/warehouse/v1
+
+ORDER_PROTO_DIR=order/v1
+ORDER_OUT_DIR=pkg/order/v1
+
+
+.PHONY: proto, clean, user-proto, warehouse-proto, product-proto, order-proto
 
 proto:
 	make user-proto
 	make product-proto
+	make warehouse-proto
+	make order-proto
 
 user-proto:
 	@echo "Generate user folders"
@@ -36,6 +45,35 @@ product-proto:
 		--go_opt=paths=source_relative \
 		--go-grpc_opt=paths=source_relative \
 		$$(find $(PRODUCT_PROTO_DIR) -name "*.proto")
+	@echo "✅ Generation complete!"
+
+
+warehouse-proto:
+	@echo "Generate warehouse folders"
+	mkdir -p pkg/warehouse/v1
+
+	@echo "🧩 Generating warehouse gRPC code from proto files..."
+	protoc \
+		--proto_path=$(WAREHOUSE_PROTO_DIR) \
+		--go_out=$(WAREHOUSE_OUT_DIR) \
+		--go-grpc_out=$(WAREHOUSE_OUT_DIR) \
+		--go_opt=paths=source_relative \
+		--go-grpc_opt=paths=source_relative \
+		$$(find $(WAREHOUSE_PROTO_DIR) -name "*.proto")
+	@echo "✅ Generation complete!"
+
+order-proto:
+	@echo "Generate order folders"
+	mkdir -p pkg/order/v1
+
+	@echo "🧩 Generating order gRPC code from proto files..."
+	protoc \
+		--proto_path=$(ORDER_PROTO_DIR) \
+		--go_out=$(ORDER_OUT_DIR) \
+		--go-grpc_out=$(ORDER_OUT_DIR) \
+		--go_opt=paths=source_relative \
+		--go-grpc_opt=paths=source_relative \
+		$$(find $(ORDER_PROTO_DIR) -name "*.proto")
 	@echo "✅ Generation complete!"
 
 clean:
