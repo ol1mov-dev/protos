@@ -38,7 +38,6 @@ enum OrderStatus {
 
 // Сообщение для создания заказа
 message CreateOrderRequest {
-  string public_order_number = 1;   // Публичный номер заказа (уникальный)
   uint32 user_id = 2;               // ID пользователя
   uint32 product_id = 3;            // ID товара
   uint32 quantity = 4;              // Количество (должно быть > 0)
@@ -109,7 +108,6 @@ message GetOrderByFiltersResponse {
 
 // Сообщение для обновления заказа
 message UpdateOrderRequest {
-  uint32 id = 1;                    // ID заказа
   optional string public_order_number = 2;  // Публичный номер заказа
   optional uint32 user_id = 3;      // ID пользователя
   optional uint32 product_id = 4;   // ID товара
