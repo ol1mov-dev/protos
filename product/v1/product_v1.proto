@@ -4,7 +4,7 @@ package product.v1;
 option go_package = "pkg/product/product_v1;productv1";
 
 message Product {
-    int32   id                  = 1;
+    uint32  id                  = 1;
     string  name                = 2;
     string  sku                 = 3;
     string  short_description   = 4;
@@ -12,11 +12,11 @@ message Product {
     double  price               = 6;
     double  price_old           = 7;
     double  discount            = 8;
-    int32   quantity            = 9;
+    uint32  quantity            = 9;
     bool    is_active           = 10;
     string  brand               = 11;
     double  rating              = 12;
-    int32   category_id         = 13;
+    uint32  category_id         = 13;
 }
 
 // CreateProduct Request and Response
@@ -28,20 +28,20 @@ message CreateProductRequest {
     double  price               = 5;
     double  price_old           = 6;
     double  discount            = 7;
-    int32   quantity            = 8;
+    uint32  quantity            = 8;
     bool    is_active           = 9;
     string  brand               = 10;
     double  rating              = 11;
-    int32   category_id         = 12;
+    uint32  category_id         = 12;
 }
 
 message CreateProductResponse {
-    int32 productId = 1;
+    uint32 productId = 1;
 }
 
 // UpdateProduct Request and Response
 message UpdateProductRequest {
-    int32   productId           = 1;
+    uint32  productId           = 1;
     string  name                = 2;
     string  sku                 = 3;
     string  short_description   = 4;
@@ -49,24 +49,24 @@ message UpdateProductRequest {
     double  price               = 6;
     double  price_old           = 7;
     double  discount            = 8;
-    int32   quantity            = 9;
+    uint32  quantity            = 9;
     bool    is_active           = 10;
     string  brand               = 11;
     double  rating              = 12;
-    int32   category_id         = 13;
+    uint32  category_id         = 13;
 }
 
 message UpdateProductResponse {
-    int32 productId = 1;
+    uint32 productId = 1;
 }
 
 // DeleteProduct Request and Response
 message DeleteProductRequest {
-    int32 productId = 1;
+    uint32 productId = 1;
 }
 
 message DeleteProductResponse {
-    int32 productId = 1;
+    uint32 productId = 1;
 }
 
 // Get all products
@@ -80,7 +80,7 @@ message GetAllProductsByQueryResponse {
 
 // Get product
 message GetProductRequest {
-  int32 productId = 1;
+  uint32 productId = 1;
 }
 
 message GetProductResponse {

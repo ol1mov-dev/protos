@@ -14,7 +14,7 @@ message CreateWarehouseRequest {
   string postal_code = 4;      // Почтовый индекс (опционально)
   string phone = 5;            // Телефон (опционально)
   bool is_active = 6;          // Активен ли склад
-  int32 capacity = 7;          // Вместимость
+  uint32 capacity = 7;          // Вместимость
   string description = 8;      // Описание
 }
 
@@ -27,7 +27,7 @@ message UpdateWarehouseRequest {
   optional string postal_code = 5; // Почтовый индекс
   optional string phone = 6;   // Телефон
   optional bool is_active = 7; // Активен ли склад
-  optional int32 capacity = 8; // Вместимость
+  optional uint32 capacity = 8; // Вместимость
   optional string description = 9; // Описание
 }
 
@@ -40,7 +40,7 @@ message Warehouse {
   string postal_code = 5;      // Почтовый индекс
   string phone = 6;            // Телефон
   bool is_active = 7;          // Активен ли склад
-  int32 capacity = 8;          // Вместимость
+  uint32 capacity = 8;          // Вместимость
   string description = 9;      // Описание
   google.protobuf.Timestamp created_at = 10; // Дата создания
   google.protobuf.Timestamp updated_at = 11; // Дата обновления
@@ -53,8 +53,8 @@ message GetWarehouseRequest {
 
 // Сообщение для получения списка складов
 message ListWarehousesRequest {
-  int32 page = 1;              // Номер страницы
-  int32 limit = 2;             // Количество элементов на странице
+  uint32 page = 1;              // Номер страницы
+  uint32 limit = 2;             // Количество элементов на странице
   bool is_active = 3;          // Фильтр по активности
   string country = 4;          // Фильтр по стране
   string city = 5;             // Фильтр по городу
@@ -63,9 +63,9 @@ message ListWarehousesRequest {
 // Ответ со списком складов
 message ListWarehousesResponse {
   repeated Warehouse warehouses = 1; // Список складов
-  int32 total_count = 2;        // Общее количество складов
-  int32 page = 3;               // Текущая страница
-  int32 total_pages = 4;        // Общее количество страниц
+  uint32 total_count = 2;        // Общее количество складов
+  uint32 page = 3;               // Текущая страница
+  uint32 total_pages = 4;        // Общее количество страниц
 }
 
 // Сообщение для удаления склада (мягкое удаление)

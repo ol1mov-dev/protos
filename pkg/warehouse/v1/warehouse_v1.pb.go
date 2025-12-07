@@ -31,7 +31,7 @@ type CreateWarehouseRequest struct {
 	PostalCode    string                 `protobuf:"bytes,4,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"` // Почтовый индекс (опционально)
 	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`                             // Телефон (опционально)
 	IsActive      bool                   `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`      // Активен ли склад
-	Capacity      int32                  `protobuf:"varint,7,opt,name=capacity,proto3" json:"capacity,omitempty"`                      // Вместимость
+	Capacity      uint32                 `protobuf:"varint,7,opt,name=capacity,proto3" json:"capacity,omitempty"`                      // Вместимость
 	Description   string                 `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`                 // Описание
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -109,7 +109,7 @@ func (x *CreateWarehouseRequest) GetIsActive() bool {
 	return false
 }
 
-func (x *CreateWarehouseRequest) GetCapacity() int32 {
+func (x *CreateWarehouseRequest) GetCapacity() uint32 {
 	if x != nil {
 		return x.Capacity
 	}
@@ -133,7 +133,7 @@ type UpdateWarehouseRequest struct {
 	PostalCode    *string                `protobuf:"bytes,5,opt,name=postal_code,json=postalCode,proto3,oneof" json:"postal_code,omitempty"` // Почтовый индекс
 	Phone         *string                `protobuf:"bytes,6,opt,name=phone,proto3,oneof" json:"phone,omitempty"`                             // Телефон
 	IsActive      *bool                  `protobuf:"varint,7,opt,name=is_active,json=isActive,proto3,oneof" json:"is_active,omitempty"`      // Активен ли склад
-	Capacity      *int32                 `protobuf:"varint,8,opt,name=capacity,proto3,oneof" json:"capacity,omitempty"`                      // Вместимость
+	Capacity      *uint32                `protobuf:"varint,8,opt,name=capacity,proto3,oneof" json:"capacity,omitempty"`                      // Вместимость
 	Description   *string                `protobuf:"bytes,9,opt,name=description,proto3,oneof" json:"description,omitempty"`                 // Описание
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -218,7 +218,7 @@ func (x *UpdateWarehouseRequest) GetIsActive() bool {
 	return false
 }
 
-func (x *UpdateWarehouseRequest) GetCapacity() int32 {
+func (x *UpdateWarehouseRequest) GetCapacity() uint32 {
 	if x != nil && x.Capacity != nil {
 		return *x.Capacity
 	}
@@ -242,7 +242,7 @@ type Warehouse struct {
 	PostalCode    string                 `protobuf:"bytes,5,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"` // Почтовый индекс
 	Phone         string                 `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`                             // Телефон
 	IsActive      bool                   `protobuf:"varint,7,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`      // Активен ли склад
-	Capacity      int32                  `protobuf:"varint,8,opt,name=capacity,proto3" json:"capacity,omitempty"`                      // Вместимость
+	Capacity      uint32                 `protobuf:"varint,8,opt,name=capacity,proto3" json:"capacity,omitempty"`                      // Вместимость
 	Description   string                 `protobuf:"bytes,9,opt,name=description,proto3" json:"description,omitempty"`                 // Описание
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`   // Дата создания
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`   // Дата обновления
@@ -329,7 +329,7 @@ func (x *Warehouse) GetIsActive() bool {
 	return false
 }
 
-func (x *Warehouse) GetCapacity() int32 {
+func (x *Warehouse) GetCapacity() uint32 {
 	if x != nil {
 		return x.Capacity
 	}
@@ -405,8 +405,8 @@ func (x *GetWarehouseRequest) GetId() int64 {
 // Сообщение для получения списка складов
 type ListWarehousesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                         // Номер страницы
-	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`                       // Количество элементов на странице
+	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                         // Номер страницы
+	Limit         uint32                 `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`                       // Количество элементов на странице
 	IsActive      bool                   `protobuf:"varint,3,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"` // Фильтр по активности
 	Country       string                 `protobuf:"bytes,4,opt,name=country,proto3" json:"country,omitempty"`                    // Фильтр по стране
 	City          string                 `protobuf:"bytes,5,opt,name=city,proto3" json:"city,omitempty"`                          // Фильтр по городу
@@ -444,14 +444,14 @@ func (*ListWarehousesRequest) Descriptor() ([]byte, []int) {
 	return file_warehouse_v1_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ListWarehousesRequest) GetPage() int32 {
+func (x *ListWarehousesRequest) GetPage() uint32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListWarehousesRequest) GetLimit() int32 {
+func (x *ListWarehousesRequest) GetLimit() uint32 {
 	if x != nil {
 		return x.Limit
 	}
@@ -483,9 +483,9 @@ func (x *ListWarehousesRequest) GetCity() string {
 type ListWarehousesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Warehouses    []*Warehouse           `protobuf:"bytes,1,rep,name=warehouses,proto3" json:"warehouses,omitempty"`                    // Список складов
-	TotalCount    int32                  `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"` // Общее количество складов
-	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`                               // Текущая страница
-	TotalPages    int32                  `protobuf:"varint,4,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"` // Общее количество страниц
+	TotalCount    uint32                 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"` // Общее количество складов
+	Page          uint32                 `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`                               // Текущая страница
+	TotalPages    uint32                 `protobuf:"varint,4,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"` // Общее количество страниц
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -527,21 +527,21 @@ func (x *ListWarehousesResponse) GetWarehouses() []*Warehouse {
 	return nil
 }
 
-func (x *ListWarehousesResponse) GetTotalCount() int32 {
+func (x *ListWarehousesResponse) GetTotalCount() uint32 {
 	if x != nil {
 		return x.TotalCount
 	}
 	return 0
 }
 
-func (x *ListWarehousesResponse) GetPage() int32 {
+func (x *ListWarehousesResponse) GetPage() uint32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListWarehousesResponse) GetTotalPages() int32 {
+func (x *ListWarehousesResponse) GetTotalPages() uint32 {
 	if x != nil {
 		return x.TotalPages
 	}
@@ -643,7 +643,7 @@ const file_warehouse_v1_proto_rawDesc = "" +
 	"postalCode\x12\x14\n" +
 	"\x05phone\x18\x05 \x01(\tR\x05phone\x12\x1b\n" +
 	"\tis_active\x18\x06 \x01(\bR\bisActive\x12\x1a\n" +
-	"\bcapacity\x18\a \x01(\x05R\bcapacity\x12 \n" +
+	"\bcapacity\x18\a \x01(\rR\bcapacity\x12 \n" +
 	"\vdescription\x18\b \x01(\tR\vdescription\"\x90\x03\n" +
 	"\x16UpdateWarehouseRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1d\n" +
@@ -654,7 +654,7 @@ const file_warehouse_v1_proto_rawDesc = "" +
 	"postalCode\x88\x01\x01\x12\x19\n" +
 	"\x05phone\x18\x06 \x01(\tH\x04R\x05phone\x88\x01\x01\x12 \n" +
 	"\tis_active\x18\a \x01(\bH\x05R\bisActive\x88\x01\x01\x12\x1f\n" +
-	"\bcapacity\x18\b \x01(\x05H\x06R\bcapacity\x88\x01\x01\x12%\n" +
+	"\bcapacity\x18\b \x01(\rH\x06R\bcapacity\x88\x01\x01\x12%\n" +
 	"\vdescription\x18\t \x01(\tH\aR\vdescription\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\a\n" +
@@ -676,7 +676,7 @@ const file_warehouse_v1_proto_rawDesc = "" +
 	"postalCode\x12\x14\n" +
 	"\x05phone\x18\x06 \x01(\tR\x05phone\x12\x1b\n" +
 	"\tis_active\x18\a \x01(\bR\bisActive\x12\x1a\n" +
-	"\bcapacity\x18\b \x01(\x05R\bcapacity\x12 \n" +
+	"\bcapacity\x18\b \x01(\rR\bcapacity\x12 \n" +
 	"\vdescription\x18\t \x01(\tR\vdescription\x129\n" +
 	"\n" +
 	"created_at\x18\n" +
@@ -686,8 +686,8 @@ const file_warehouse_v1_proto_rawDesc = "" +
 	"\x13GetWarehouseRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\x8c\x01\n" +
 	"\x15ListWarehousesRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x14\n" +
-	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x1b\n" +
+	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\rR\x05limit\x12\x1b\n" +
 	"\tis_active\x18\x03 \x01(\bR\bisActive\x12\x18\n" +
 	"\acountry\x18\x04 \x01(\tR\acountry\x12\x12\n" +
 	"\x04city\x18\x05 \x01(\tR\x04city\"\xa7\x01\n" +
@@ -695,10 +695,10 @@ const file_warehouse_v1_proto_rawDesc = "" +
 	"\n" +
 	"warehouses\x18\x01 \x03(\v2\x17.warehouse.v1.WarehouseR\n" +
 	"warehouses\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"\vtotal_count\x18\x02 \x01(\rR\n" +
 	"totalCount\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1f\n" +
-	"\vtotal_pages\x18\x04 \x01(\x05R\n" +
+	"\x04page\x18\x03 \x01(\rR\x04page\x12\x1f\n" +
+	"\vtotal_pages\x18\x04 \x01(\rR\n" +
 	"totalPages\"(\n" +
 	"\x16DeleteWarehouseRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\x0f\n" +

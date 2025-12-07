@@ -79,3 +79,5 @@ order-proto:
 clean:
 	rm -rf pkg/user
 	rm -rf pkg/product
+	rm -rf pkg/order
+	rm -rf pkg/warehouse
