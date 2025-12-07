@@ -1633,8 +1633,8 @@ const file_order_v1_proto_rawDesc = "" +
 	"\tSortOrder\x12\x1a\n" +
 	"\x16SORT_ORDER_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eSORT_ORDER_ASC\x10\x01\x12\x13\n" +
-	"\x0fSORT_ORDER_DESC\x10\x022\xff\x04\n" +
-	"\fOrderService\x12J\n" +
+	"\x0fSORT_ORDER_DESC\x10\x022\x81\x05\n" +
+	"\x0eOrderV1Service\x12J\n" +
 	"\vCreateOrder\x12\x1c.order.v1.CreateOrderRequest\x1a\x1d.order.v1.CreateOrderResponse\x12Y\n" +
 	"\x10GetOrderByUserId\x12!.order.v1.GetOrderByUserIdRequest\x1a\".order.v1.GetOrderByUserIdResponse\x12z\n" +
 	"\x1bGetOrderByPublicOrderNumber\x12,.order.v1.GetOrderByPublicOrderNumberRequest\x1a-.order.v1.GetOrderByPublicOrderNumberResponse\x12\\\n" +
@@ -1709,20 +1709,20 @@ var file_order_v1_proto_depIdxs = []int32{
 	0,  // 20: order.v1.OrderStatusHistory.StatusChange.old_status:type_name -> order.v1.OrderStatus
 	0,  // 21: order.v1.OrderStatusHistory.StatusChange.new_status:type_name -> order.v1.OrderStatus
 	25, // 22: order.v1.OrderStatusHistory.StatusChange.changed_at:type_name -> google.protobuf.Timestamp
-	4,  // 23: order.v1.OrderService.CreateOrder:input_type -> order.v1.CreateOrderRequest
-	6,  // 24: order.v1.OrderService.GetOrderByUserId:input_type -> order.v1.GetOrderByUserIdRequest
-	8,  // 25: order.v1.OrderService.GetOrderByPublicOrderNumber:input_type -> order.v1.GetOrderByPublicOrderNumberRequest
-	10, // 26: order.v1.OrderService.GetOrderByFilters:input_type -> order.v1.GetOrderByFiltersRequest
-	12, // 27: order.v1.OrderService.UpdateOrder:input_type -> order.v1.UpdateOrderRequest
-	14, // 28: order.v1.OrderService.UpdateOrderStatus:input_type -> order.v1.UpdateOrderStatusRequest
-	18, // 29: order.v1.OrderService.CancelOrder:input_type -> order.v1.CancelOrderRequest
-	5,  // 30: order.v1.OrderService.CreateOrder:output_type -> order.v1.CreateOrderResponse
-	7,  // 31: order.v1.OrderService.GetOrderByUserId:output_type -> order.v1.GetOrderByUserIdResponse
-	9,  // 32: order.v1.OrderService.GetOrderByPublicOrderNumber:output_type -> order.v1.GetOrderByPublicOrderNumberResponse
-	11, // 33: order.v1.OrderService.GetOrderByFilters:output_type -> order.v1.GetOrderByFiltersResponse
-	13, // 34: order.v1.OrderService.UpdateOrder:output_type -> order.v1.UpdateOrderResponse
-	15, // 35: order.v1.OrderService.UpdateOrderStatus:output_type -> order.v1.UpdateOrderStatusResponse
-	21, // 36: order.v1.OrderService.CancelOrder:output_type -> order.v1.EmptyResponse
+	4,  // 23: order.v1.OrderV1Service.CreateOrder:input_type -> order.v1.CreateOrderRequest
+	6,  // 24: order.v1.OrderV1Service.GetOrderByUserId:input_type -> order.v1.GetOrderByUserIdRequest
+	8,  // 25: order.v1.OrderV1Service.GetOrderByPublicOrderNumber:input_type -> order.v1.GetOrderByPublicOrderNumberRequest
+	10, // 26: order.v1.OrderV1Service.GetOrderByFilters:input_type -> order.v1.GetOrderByFiltersRequest
+	12, // 27: order.v1.OrderV1Service.UpdateOrder:input_type -> order.v1.UpdateOrderRequest
+	14, // 28: order.v1.OrderV1Service.UpdateOrderStatus:input_type -> order.v1.UpdateOrderStatusRequest
+	18, // 29: order.v1.OrderV1Service.CancelOrder:input_type -> order.v1.CancelOrderRequest
+	5,  // 30: order.v1.OrderV1Service.CreateOrder:output_type -> order.v1.CreateOrderResponse
+	7,  // 31: order.v1.OrderV1Service.GetOrderByUserId:output_type -> order.v1.GetOrderByUserIdResponse
+	9,  // 32: order.v1.OrderV1Service.GetOrderByPublicOrderNumber:output_type -> order.v1.GetOrderByPublicOrderNumberResponse
+	11, // 33: order.v1.OrderV1Service.GetOrderByFilters:output_type -> order.v1.GetOrderByFiltersResponse
+	13, // 34: order.v1.OrderV1Service.UpdateOrder:output_type -> order.v1.UpdateOrderResponse
+	15, // 35: order.v1.OrderV1Service.UpdateOrderStatus:output_type -> order.v1.UpdateOrderStatusResponse
+	21, // 36: order.v1.OrderV1Service.CancelOrder:output_type -> order.v1.EmptyResponse
 	30, // [30:37] is the sub-list for method output_type
 	23, // [23:30] is the sub-list for method input_type
 	23, // [23:23] is the sub-list for extension type_name

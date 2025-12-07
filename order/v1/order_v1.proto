@@ -179,7 +179,7 @@ message GetOrderHistoryRequest {
 message EmptyResponse {}
 
 // Сервис для управления заказами
-service OrderService {
+service OrderV1Service {
   // Создать новый заказ
   rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
   rpc GetOrderByUserId (GetOrderByUserIdRequest) returns (GetOrderByUserIdResponse);
