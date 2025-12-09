@@ -62,7 +62,7 @@ message GetOrderByPublicOrderNumberRequest {
   string public_order_number = 1;
 }
 
-message GetOrdersByPublicOrderNumberResponse {
+message GetOrderByPublicOrderNumberResponse {
   repeated Order orders = 1;
 }
 
@@ -181,7 +181,7 @@ service OrderV1Service {
   // Создать новый заказ
   rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
   rpc GetAllOrdersByUserId (GetOrdersByUserIdRequest) returns (GetOrdersByUserIdResponse);
-  rpc GetAllOrdersByPublicOrderNumber (GetOrderByPublicOrderNumberRequest) returns (GetOrdersByPublicOrderNumberResponse);
+  rpc GetOrderByPublicOrderNumber (GetOrderByPublicOrderNumberRequest) returns (GetOrderByPublicOrderNumberResponse);
   rpc GetAllOrdersByFilters (GetOrdersByFiltersRequest) returns (GetOrdersByFiltersResponse);
 
   rpc UpdateOrder (UpdateOrderRequest) returns (UpdateOrderResponse);

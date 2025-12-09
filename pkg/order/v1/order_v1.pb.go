@@ -581,27 +581,27 @@ func (x *GetOrderByPublicOrderNumberRequest) GetPublicOrderNumber() string {
 	return ""
 }
 
-type GetOrdersByPublicOrderNumberResponse struct {
+type GetOrderByPublicOrderNumberResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Orders        []*Order               `protobuf:"bytes,1,rep,name=orders,proto3" json:"orders,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetOrdersByPublicOrderNumberResponse) Reset() {
-	*x = GetOrdersByPublicOrderNumberResponse{}
+func (x *GetOrderByPublicOrderNumberResponse) Reset() {
+	*x = GetOrderByPublicOrderNumberResponse{}
 	mi := &file_order_v1_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetOrdersByPublicOrderNumberResponse) String() string {
+func (x *GetOrderByPublicOrderNumberResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetOrdersByPublicOrderNumberResponse) ProtoMessage() {}
+func (*GetOrderByPublicOrderNumberResponse) ProtoMessage() {}
 
-func (x *GetOrdersByPublicOrderNumberResponse) ProtoReflect() protoreflect.Message {
+func (x *GetOrderByPublicOrderNumberResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_order_v1_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -613,12 +613,12 @@ func (x *GetOrdersByPublicOrderNumberResponse) ProtoReflect() protoreflect.Messa
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetOrdersByPublicOrderNumberResponse.ProtoReflect.Descriptor instead.
-func (*GetOrdersByPublicOrderNumberResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOrderByPublicOrderNumberResponse.ProtoReflect.Descriptor instead.
+func (*GetOrderByPublicOrderNumberResponse) Descriptor() ([]byte, []int) {
 	return file_order_v1_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetOrdersByPublicOrderNumberResponse) GetOrders() []*Order {
+func (x *GetOrderByPublicOrderNumberResponse) GetOrders() []*Order {
 	if x != nil {
 		return x.Orders
 	}
@@ -1492,8 +1492,8 @@ const file_order_v1_proto_rawDesc = "" +
 	"\x19GetOrdersByUserIdResponse\x12'\n" +
 	"\x06orders\x18\x01 \x03(\v2\x0f.order.v1.OrderR\x06orders\"T\n" +
 	"\"GetOrderByPublicOrderNumberRequest\x12.\n" +
-	"\x13public_order_number\x18\x01 \x01(\tR\x11publicOrderNumber\"O\n" +
-	"$GetOrdersByPublicOrderNumberResponse\x12'\n" +
+	"\x13public_order_number\x18\x01 \x01(\tR\x11publicOrderNumber\"N\n" +
+	"#GetOrderByPublicOrderNumberResponse\x12'\n" +
 	"\x06orders\x18\x01 \x03(\v2\x0f.order.v1.OrderR\x06orders\"\x91\x04\n" +
 	"\x19GetOrdersByFiltersRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
@@ -1615,11 +1615,11 @@ const file_order_v1_proto_rawDesc = "" +
 	"\tSortOrder\x12\x1a\n" +
 	"\x16SORT_ORDER_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eSORT_ORDER_ASC\x10\x01\x12\x13\n" +
-	"\x0fSORT_ORDER_DESC\x10\x022\x92\x05\n" +
+	"\x0fSORT_ORDER_DESC\x10\x022\x8d\x05\n" +
 	"\x0eOrderV1Service\x12J\n" +
 	"\vCreateOrder\x12\x1c.order.v1.CreateOrderRequest\x1a\x1d.order.v1.CreateOrderResponse\x12_\n" +
-	"\x14GetAllOrdersByUserId\x12\".order.v1.GetOrdersByUserIdRequest\x1a#.order.v1.GetOrdersByUserIdResponse\x12\x7f\n" +
-	"\x1fGetAllOrdersByPublicOrderNumber\x12,.order.v1.GetOrderByPublicOrderNumberRequest\x1a..order.v1.GetOrdersByPublicOrderNumberResponse\x12b\n" +
+	"\x14GetAllOrdersByUserId\x12\".order.v1.GetOrdersByUserIdRequest\x1a#.order.v1.GetOrdersByUserIdResponse\x12z\n" +
+	"\x1bGetOrderByPublicOrderNumber\x12,.order.v1.GetOrderByPublicOrderNumberRequest\x1a-.order.v1.GetOrderByPublicOrderNumberResponse\x12b\n" +
 	"\x15GetAllOrdersByFilters\x12#.order.v1.GetOrdersByFiltersRequest\x1a$.order.v1.GetOrdersByFiltersResponse\x12J\n" +
 	"\vUpdateOrder\x12\x1c.order.v1.UpdateOrderRequest\x1a\x1d.order.v1.UpdateOrderResponse\x12\\\n" +
 	"\x11UpdateOrderStatus\x12\".order.v1.UpdateOrderStatusRequest\x1a#.order.v1.UpdateOrderStatusResponse\x12D\n" +
@@ -1640,32 +1640,32 @@ func file_order_v1_proto_rawDescGZIP() []byte {
 var file_order_v1_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_order_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_order_v1_proto_goTypes = []any{
-	(OrderStatus)(0),                             // 0: order.v1.OrderStatus
-	(SortBy)(0),                                  // 1: order.v1.SortBy
-	(SortOrder)(0),                               // 2: order.v1.SortOrder
-	(*Order)(nil),                                // 3: order.v1.Order
-	(*CreateOrderRequest)(nil),                   // 4: order.v1.CreateOrderRequest
-	(*CreateOrderResponse)(nil),                  // 5: order.v1.CreateOrderResponse
-	(*GetOrdersByUserIdRequest)(nil),             // 6: order.v1.GetOrdersByUserIdRequest
-	(*GetOrdersByUserIdResponse)(nil),            // 7: order.v1.GetOrdersByUserIdResponse
-	(*GetOrderByPublicOrderNumberRequest)(nil),   // 8: order.v1.GetOrderByPublicOrderNumberRequest
-	(*GetOrdersByPublicOrderNumberResponse)(nil), // 9: order.v1.GetOrdersByPublicOrderNumberResponse
-	(*GetOrdersByFiltersRequest)(nil),            // 10: order.v1.GetOrdersByFiltersRequest
-	(*GetOrdersByFiltersResponse)(nil),           // 11: order.v1.GetOrdersByFiltersResponse
-	(*UpdateOrderRequest)(nil),                   // 12: order.v1.UpdateOrderRequest
-	(*UpdateOrderResponse)(nil),                  // 13: order.v1.UpdateOrderResponse
-	(*UpdateOrderStatusRequest)(nil),             // 14: order.v1.UpdateOrderStatusRequest
-	(*UpdateOrderStatusResponse)(nil),            // 15: order.v1.UpdateOrderStatusResponse
-	(*GetOrdersStatisticsRequest)(nil),           // 16: order.v1.GetOrdersStatisticsRequest
-	(*GetOrdersStatisticsResponse)(nil),          // 17: order.v1.GetOrdersStatisticsResponse
-	(*CancelOrderRequest)(nil),                   // 18: order.v1.CancelOrderRequest
-	(*OrderStatusHistory)(nil),                   // 19: order.v1.OrderStatusHistory
-	(*GetOrderHistoryRequest)(nil),               // 20: order.v1.GetOrderHistoryRequest
-	(*EmptyResponse)(nil),                        // 21: order.v1.EmptyResponse
-	nil,                                          // 22: order.v1.GetOrdersStatisticsResponse.StatusCountsEntry
-	nil,                                          // 23: order.v1.GetOrdersStatisticsResponse.UserOrderCountsEntry
-	(*OrderStatusHistory_StatusChange)(nil),      // 24: order.v1.OrderStatusHistory.StatusChange
-	(*timestamppb.Timestamp)(nil),                // 25: google.protobuf.Timestamp
+	(OrderStatus)(0),                            // 0: order.v1.OrderStatus
+	(SortBy)(0),                                 // 1: order.v1.SortBy
+	(SortOrder)(0),                              // 2: order.v1.SortOrder
+	(*Order)(nil),                               // 3: order.v1.Order
+	(*CreateOrderRequest)(nil),                  // 4: order.v1.CreateOrderRequest
+	(*CreateOrderResponse)(nil),                 // 5: order.v1.CreateOrderResponse
+	(*GetOrdersByUserIdRequest)(nil),            // 6: order.v1.GetOrdersByUserIdRequest
+	(*GetOrdersByUserIdResponse)(nil),           // 7: order.v1.GetOrdersByUserIdResponse
+	(*GetOrderByPublicOrderNumberRequest)(nil),  // 8: order.v1.GetOrderByPublicOrderNumberRequest
+	(*GetOrderByPublicOrderNumberResponse)(nil), // 9: order.v1.GetOrderByPublicOrderNumberResponse
+	(*GetOrdersByFiltersRequest)(nil),           // 10: order.v1.GetOrdersByFiltersRequest
+	(*GetOrdersByFiltersResponse)(nil),          // 11: order.v1.GetOrdersByFiltersResponse
+	(*UpdateOrderRequest)(nil),                  // 12: order.v1.UpdateOrderRequest
+	(*UpdateOrderResponse)(nil),                 // 13: order.v1.UpdateOrderResponse
+	(*UpdateOrderStatusRequest)(nil),            // 14: order.v1.UpdateOrderStatusRequest
+	(*UpdateOrderStatusResponse)(nil),           // 15: order.v1.UpdateOrderStatusResponse
+	(*GetOrdersStatisticsRequest)(nil),          // 16: order.v1.GetOrdersStatisticsRequest
+	(*GetOrdersStatisticsResponse)(nil),         // 17: order.v1.GetOrdersStatisticsResponse
+	(*CancelOrderRequest)(nil),                  // 18: order.v1.CancelOrderRequest
+	(*OrderStatusHistory)(nil),                  // 19: order.v1.OrderStatusHistory
+	(*GetOrderHistoryRequest)(nil),              // 20: order.v1.GetOrderHistoryRequest
+	(*EmptyResponse)(nil),                       // 21: order.v1.EmptyResponse
+	nil,                                         // 22: order.v1.GetOrdersStatisticsResponse.StatusCountsEntry
+	nil,                                         // 23: order.v1.GetOrdersStatisticsResponse.UserOrderCountsEntry
+	(*OrderStatusHistory_StatusChange)(nil),     // 24: order.v1.OrderStatusHistory.StatusChange
+	(*timestamppb.Timestamp)(nil),               // 25: google.protobuf.Timestamp
 }
 var file_order_v1_proto_depIdxs = []int32{
 	0,  // 0: order.v1.Order.status:type_name -> order.v1.OrderStatus
@@ -1673,7 +1673,7 @@ var file_order_v1_proto_depIdxs = []int32{
 	25, // 2: order.v1.Order.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: order.v1.CreateOrderRequest.status:type_name -> order.v1.OrderStatus
 	3,  // 4: order.v1.GetOrdersByUserIdResponse.orders:type_name -> order.v1.Order
-	3,  // 5: order.v1.GetOrdersByPublicOrderNumberResponse.orders:type_name -> order.v1.Order
+	3,  // 5: order.v1.GetOrderByPublicOrderNumberResponse.orders:type_name -> order.v1.Order
 	0,  // 6: order.v1.GetOrdersByFiltersRequest.statuses:type_name -> order.v1.OrderStatus
 	25, // 7: order.v1.GetOrdersByFiltersRequest.created_from:type_name -> google.protobuf.Timestamp
 	25, // 8: order.v1.GetOrdersByFiltersRequest.created_to:type_name -> google.protobuf.Timestamp
@@ -1693,14 +1693,14 @@ var file_order_v1_proto_depIdxs = []int32{
 	25, // 22: order.v1.OrderStatusHistory.StatusChange.changed_at:type_name -> google.protobuf.Timestamp
 	4,  // 23: order.v1.OrderV1Service.CreateOrder:input_type -> order.v1.CreateOrderRequest
 	6,  // 24: order.v1.OrderV1Service.GetAllOrdersByUserId:input_type -> order.v1.GetOrdersByUserIdRequest
-	8,  // 25: order.v1.OrderV1Service.GetAllOrdersByPublicOrderNumber:input_type -> order.v1.GetOrderByPublicOrderNumberRequest
+	8,  // 25: order.v1.OrderV1Service.GetOrderByPublicOrderNumber:input_type -> order.v1.GetOrderByPublicOrderNumberRequest
 	10, // 26: order.v1.OrderV1Service.GetAllOrdersByFilters:input_type -> order.v1.GetOrdersByFiltersRequest
 	12, // 27: order.v1.OrderV1Service.UpdateOrder:input_type -> order.v1.UpdateOrderRequest
 	14, // 28: order.v1.OrderV1Service.UpdateOrderStatus:input_type -> order.v1.UpdateOrderStatusRequest
 	18, // 29: order.v1.OrderV1Service.CancelOrder:input_type -> order.v1.CancelOrderRequest
 	5,  // 30: order.v1.OrderV1Service.CreateOrder:output_type -> order.v1.CreateOrderResponse
 	7,  // 31: order.v1.OrderV1Service.GetAllOrdersByUserId:output_type -> order.v1.GetOrdersByUserIdResponse
-	9,  // 32: order.v1.OrderV1Service.GetAllOrdersByPublicOrderNumber:output_type -> order.v1.GetOrdersByPublicOrderNumberResponse
+	9,  // 32: order.v1.OrderV1Service.GetOrderByPublicOrderNumber:output_type -> order.v1.GetOrderByPublicOrderNumberResponse
 	11, // 33: order.v1.OrderV1Service.GetAllOrdersByFilters:output_type -> order.v1.GetOrdersByFiltersResponse
 	13, // 34: order.v1.OrderV1Service.UpdateOrder:output_type -> order.v1.UpdateOrderResponse
 	15, // 35: order.v1.OrderV1Service.UpdateOrderStatus:output_type -> order.v1.UpdateOrderStatusResponse
