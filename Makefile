@@ -10,14 +10,17 @@ WAREHOUSE_OUT_DIR=pkg/warehouse/v1
 ORDER_PROTO_DIR=order/v1
 ORDER_OUT_DIR=pkg/order/v1
 
+PAYMENT_PROTO_DIR=payment/v1
+PAYMENT_OUT_DIR=pkg/payment/v1
 
-.PHONY: proto, clean, user-proto, warehouse-proto, product-proto, order-proto
+.PHONY: proto, clean, user-proto, warehouse-proto, product-proto, order-proto, payment-proto
 
 proto:
 	make user-proto
 	make product-proto
 	make warehouse-proto
 	make order-proto
+	make payment-proto
 
 user-proto:
 	@echo "Generate user folders"
@@ -75,9 +78,23 @@ order-proto:
 		--go-grpc_opt=paths=source_relative \
 		$$(find $(ORDER_PROTO_DIR) -name "*.proto")
 	@echo "✅ Generation complete!"
+payment-proto:
+	@echo "Generate order folders"
+	mkdir -p pkg/payment/v1
+
+	@echo "🧩 Generating order gRPC code from proto files..."
+	protoc \
+		--proto_path=$(PAYMENT_PROTO_DIR) \
+		--go_out=$(PAYMENT_OUT_DIR) \
+		--go-grpc_out=$(PAYMENT_OUT_DIR) \
+		--go_opt=paths=source_relative \
+		--go-grpc_opt=paths=source_relative \
+		$$(find $(PAYMENT_PROTO_DIR) -name "*.proto")
+	@echo "✅ Generation complete!"
 
 clean:
 	rm -rf pkg/user
 	rm -rf pkg/product
 	rm -rf pkg/order
 	rm -rf pkg/warehouse
+	rm -rf pkg/payment
