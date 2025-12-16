@@ -8,24 +8,24 @@ option go_package = "pkg/payment/v1/payment_v1;paymentv1";
 import "google/protobuf/timestamp.proto";
 
 message CreatePaymentRequest {
-  string order_id = 1;
+  uint32 order_id = 1;
   string user_id = 2;
   double amount = 3;
   string currency = 4;
 }
 
 message CreatePaymentResponse {
-  string payment_id = 1;
+  uint32 id = 1;
   PaymentStatus status = 2;
   google.protobuf.Timestamp created_at = 3;
 }
 
 message GetPaymentRequest {
-  string payment_id = 1;
+  uint32 payment_id = 1;
 }
 
 message GetPaymentResponse {
-  string payment_id = 1;
+  uint32 id = 1;
   string order_id = 2;
   string user_id = 3;
   double amount = 4;

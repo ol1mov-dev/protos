@@ -76,7 +76,7 @@ func (PaymentStatus) EnumDescriptor() ([]byte, []int) {
 
 type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	OrderId       string                 `protobuf:"bytes,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
+	OrderId       uint32                 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
 	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
@@ -114,11 +114,11 @@ func (*CreatePaymentRequest) Descriptor() ([]byte, []int) {
 	return file_payment_v1_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreatePaymentRequest) GetOrderId() string {
+func (x *CreatePaymentRequest) GetOrderId() uint32 {
 	if x != nil {
 		return x.OrderId
 	}
-	return ""
+	return 0
 }
 
 func (x *CreatePaymentRequest) GetUserId() string {
@@ -144,7 +144,7 @@ func (x *CreatePaymentRequest) GetCurrency() string {
 
 type CreatePaymentResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Status        PaymentStatus          `protobuf:"varint,2,opt,name=status,proto3,enum=payment.v1.PaymentStatus" json:"status,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -181,11 +181,11 @@ func (*CreatePaymentResponse) Descriptor() ([]byte, []int) {
 	return file_payment_v1_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreatePaymentResponse) GetPaymentId() string {
+func (x *CreatePaymentResponse) GetId() uint32 {
 	if x != nil {
-		return x.PaymentId
+		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *CreatePaymentResponse) GetStatus() PaymentStatus {
@@ -204,7 +204,7 @@ func (x *CreatePaymentResponse) GetCreatedAt() *timestamppb.Timestamp {
 
 type GetPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	PaymentId     uint32                 `protobuf:"varint,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -239,16 +239,16 @@ func (*GetPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_payment_v1_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetPaymentRequest) GetPaymentId() string {
+func (x *GetPaymentRequest) GetPaymentId() uint32 {
 	if x != nil {
 		return x.PaymentId
 	}
-	return ""
+	return 0
 }
 
 type GetPaymentResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	OrderId       string                 `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	UserId        string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Amount        float64                `protobuf:"fixed64,4,opt,name=amount,proto3" json:"amount,omitempty"`
@@ -289,11 +289,11 @@ func (*GetPaymentResponse) Descriptor() ([]byte, []int) {
 	return file_payment_v1_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetPaymentResponse) GetPaymentId() string {
+func (x *GetPaymentResponse) GetId() uint32 {
 	if x != nil {
-		return x.PaymentId
+		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *GetPaymentResponse) GetOrderId() string {
@@ -345,22 +345,20 @@ const file_payment_v1_proto_rawDesc = "" +
 	"\x10payment_v1.proto\x12\n" +
 	"payment.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"~\n" +
 	"\x14CreatePaymentRequest\x12\x19\n" +
-	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x17\n" +
+	"\border_id\x18\x01 \x01(\rR\aorderId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x16\n" +
 	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12\x1a\n" +
-	"\bcurrency\x18\x04 \x01(\tR\bcurrency\"\xa4\x01\n" +
-	"\x15CreatePaymentResponse\x12\x1d\n" +
-	"\n" +
-	"payment_id\x18\x01 \x01(\tR\tpaymentId\x121\n" +
+	"\bcurrency\x18\x04 \x01(\tR\bcurrency\"\x95\x01\n" +
+	"\x15CreatePaymentResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
 	"\x06status\x18\x02 \x01(\x0e2\x19.payment.v1.PaymentStatusR\x06status\x129\n" +
 	"\n" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"2\n" +
 	"\x11GetPaymentRequest\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x01 \x01(\tR\tpaymentId\"\xac\x02\n" +
-	"\x12GetPaymentResponse\x12\x1d\n" +
-	"\n" +
-	"payment_id\x18\x01 \x01(\tR\tpaymentId\x12\x19\n" +
+	"payment_id\x18\x01 \x01(\rR\tpaymentId\"\x9d\x02\n" +
+	"\x12GetPaymentResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\border_id\x18\x02 \x01(\tR\aorderId\x12\x17\n" +
 	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x16\n" +
 	"\x06amount\x18\x04 \x01(\x01R\x06amount\x121\n" +
