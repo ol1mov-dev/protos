@@ -204,7 +204,7 @@ func (x *CreatePaymentResponse) GetCreatedAt() *timestamppb.Timestamp {
 
 type GetPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     uint32                 `protobuf:"varint,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -239,9 +239,9 @@ func (*GetPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_payment_v1_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetPaymentRequest) GetPaymentId() uint32 {
+func (x *GetPaymentRequest) GetId() uint32 {
 	if x != nil {
-		return x.PaymentId
+		return x.Id
 	}
 	return 0
 }
@@ -353,10 +353,9 @@ const file_payment_v1_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
 	"\x06status\x18\x02 \x01(\x0e2\x19.payment.v1.PaymentStatusR\x06status\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"2\n" +
-	"\x11GetPaymentRequest\x12\x1d\n" +
-	"\n" +
-	"payment_id\x18\x01 \x01(\rR\tpaymentId\"\x9d\x02\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"#\n" +
+	"\x11GetPaymentRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x9d\x02\n" +
 	"\x12GetPaymentResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x19\n" +
 	"\border_id\x18\x02 \x01(\tR\aorderId\x12\x17\n" +
