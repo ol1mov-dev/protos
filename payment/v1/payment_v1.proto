@@ -9,7 +9,7 @@ import "google/protobuf/timestamp.proto";
 
 message CreatePaymentRequest {
   uint32 order_id   = 1;
-  string user_id    = 2;
+  uint32 user_id    = 2;
   double total_sum  = 3;
 }
 
