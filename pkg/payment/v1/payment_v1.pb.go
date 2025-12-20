@@ -79,7 +79,6 @@ type CreatePaymentRequest struct {
 	OrderId       uint32                 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	TotalSum      float64                `protobuf:"fixed64,3,opt,name=total_sum,json=totalSum,proto3" json:"total_sum,omitempty"`
-	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -133,13 +132,6 @@ func (x *CreatePaymentRequest) GetTotalSum() float64 {
 		return x.TotalSum
 	}
 	return 0
-}
-
-func (x *CreatePaymentRequest) GetCurrency() string {
-	if x != nil {
-		return x.Currency
-	}
-	return ""
 }
 
 type CreatePaymentResponse struct {
@@ -343,12 +335,11 @@ var File_payment_v1_proto protoreflect.FileDescriptor
 const file_payment_v1_proto_rawDesc = "" +
 	"\n" +
 	"\x10payment_v1.proto\x12\n" +
-	"payment.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x83\x01\n" +
+	"payment.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"g\n" +
 	"\x14CreatePaymentRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\rR\aorderId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
-	"\ttotal_sum\x18\x03 \x01(\x01R\btotalSum\x12\x1a\n" +
-	"\bcurrency\x18\x04 \x01(\tR\bcurrency\"\x95\x01\n" +
+	"\ttotal_sum\x18\x03 \x01(\x01R\btotalSum\"\x95\x01\n" +
 	"\x15CreatePaymentResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x121\n" +
 	"\x06status\x18\x02 \x01(\x0e2\x19.payment.v1.PaymentStatusR\x06status\x129\n" +
