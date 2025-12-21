@@ -54,7 +54,6 @@ message DeleteUserRequest {
 }
 
 message DeleteUserResponse {
-  bool success = 1;
 }
 
 // SERVICE

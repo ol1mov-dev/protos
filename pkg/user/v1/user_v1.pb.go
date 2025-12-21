@@ -504,7 +504,6 @@ func (x *DeleteUserRequest) GetId() uint32 {
 
 type DeleteUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -537,13 +536,6 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
 	return file_user_v1_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DeleteUserResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 var File_user_v1_proto protoreflect.FileDescriptor
@@ -587,9 +579,8 @@ const file_user_v1_proto_rawDesc = "" +
 	"\x12UpdateUserResponse\x12!\n" +
 	"\x04user\x18\x01 \x01(\v2\r.user.v1.UserR\x04user\"#\n" +
 	"\x11DeleteUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\rR\x02id\".\n" +
-	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa2\x02\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"\x14\n" +
+	"\x12DeleteUserResponse2\xa2\x02\n" +
 	"\rUserV1Service\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.user.v1.CreateUserRequest\x1a\x1b.user.v1.CreateUserResponse\x12<\n" +
