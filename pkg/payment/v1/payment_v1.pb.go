@@ -360,8 +360,8 @@ const file_payment_v1_proto_rawDesc = "" +
 	"\x1aPAYMENT_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16PAYMENT_STATUS_PENDING\x10\x01\x12\x1c\n" +
 	"\x18PAYMENT_STATUS_CONFIRMED\x10\x02\x12\x19\n" +
-	"\x15PAYMENT_STATUS_FAILED\x10\x032\xb3\x01\n" +
-	"\x0ePaymentService\x12T\n" +
+	"\x15PAYMENT_STATUS_FAILED\x10\x032\xb5\x01\n" +
+	"\x10PaymentV1Service\x12T\n" +
 	"\rCreatePayment\x12 .payment.v1.CreatePaymentRequest\x1a!.payment.v1.CreatePaymentResponse\x12K\n" +
 	"\n" +
 	"GetPayment\x12\x1d.payment.v1.GetPaymentRequest\x1a\x1e.payment.v1.GetPaymentResponseB%Z#pkg/payment/v1/payment_v1;paymentv1b\x06proto3"
@@ -394,10 +394,10 @@ var file_payment_v1_proto_depIdxs = []int32{
 	0, // 2: payment.v1.GetPaymentResponse.status:type_name -> payment.v1.PaymentStatus
 	5, // 3: payment.v1.GetPaymentResponse.created_at:type_name -> google.protobuf.Timestamp
 	5, // 4: payment.v1.GetPaymentResponse.confirmed_at:type_name -> google.protobuf.Timestamp
-	1, // 5: payment.v1.PaymentService.CreatePayment:input_type -> payment.v1.CreatePaymentRequest
-	3, // 6: payment.v1.PaymentService.GetPayment:input_type -> payment.v1.GetPaymentRequest
-	2, // 7: payment.v1.PaymentService.CreatePayment:output_type -> payment.v1.CreatePaymentResponse
-	4, // 8: payment.v1.PaymentService.GetPayment:output_type -> payment.v1.GetPaymentResponse
+	1, // 5: payment.v1.PaymentV1Service.CreatePayment:input_type -> payment.v1.CreatePaymentRequest
+	3, // 6: payment.v1.PaymentV1Service.GetPayment:input_type -> payment.v1.GetPaymentRequest
+	2, // 7: payment.v1.PaymentV1Service.CreatePayment:output_type -> payment.v1.CreatePaymentResponse
+	4, // 8: payment.v1.PaymentV1Service.GetPayment:output_type -> payment.v1.GetPaymentResponse
 	7, // [7:9] is the sub-list for method output_type
 	5, // [5:7] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name

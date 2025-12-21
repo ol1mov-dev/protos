@@ -40,7 +40,7 @@ enum PaymentStatus {
   PAYMENT_STATUS_FAILED = 3;
 }
 
-service PaymentService {
+service PaymentV1Service {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
 }
