@@ -40,7 +40,14 @@ enum PaymentStatus {
   PAYMENT_STATUS_FAILED = 3;
 }
 
+message MakePaymentRequest {
+  uint32 payment_id = 1;
+}
+
+message EmptyResponse{}
+
 service PaymentV1Service {
-  rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
-  rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
+  rpc CreatePayment (CreatePaymentRequest)  returns (CreatePaymentResponse);
+  rpc GetPayment    (GetPaymentRequest)     returns (GetPaymentResponse);
+  rpc MakePayment   (MakePaymentRequest)    returns (EmptyResponse);
 }

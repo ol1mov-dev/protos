@@ -330,6 +330,86 @@ func (x *GetPaymentResponse) GetConfirmedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type MakePaymentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PaymentId     uint32                 `protobuf:"varint,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MakePaymentRequest) Reset() {
+	*x = MakePaymentRequest{}
+	mi := &file_payment_v1_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MakePaymentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MakePaymentRequest) ProtoMessage() {}
+
+func (x *MakePaymentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_payment_v1_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MakePaymentRequest.ProtoReflect.Descriptor instead.
+func (*MakePaymentRequest) Descriptor() ([]byte, []int) {
+	return file_payment_v1_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *MakePaymentRequest) GetPaymentId() uint32 {
+	if x != nil {
+		return x.PaymentId
+	}
+	return 0
+}
+
+type EmptyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EmptyResponse) Reset() {
+	*x = EmptyResponse{}
+	mi := &file_payment_v1_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EmptyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmptyResponse) ProtoMessage() {}
+
+func (x *EmptyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_payment_v1_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmptyResponse.ProtoReflect.Descriptor instead.
+func (*EmptyResponse) Descriptor() ([]byte, []int) {
+	return file_payment_v1_proto_rawDescGZIP(), []int{5}
+}
+
 var File_payment_v1_proto protoreflect.FileDescriptor
 
 const file_payment_v1_proto_rawDesc = "" +
@@ -355,16 +435,21 @@ const file_payment_v1_proto_rawDesc = "" +
 	"\x06status\x18\x05 \x01(\x0e2\x19.payment.v1.PaymentStatusR\x06status\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12=\n" +
-	"\fconfirmed_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\vconfirmedAt*\x84\x01\n" +
+	"\fconfirmed_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\vconfirmedAt\"3\n" +
+	"\x12MakePaymentRequest\x12\x1d\n" +
+	"\n" +
+	"payment_id\x18\x01 \x01(\rR\tpaymentId\"\x0f\n" +
+	"\rEmptyResponse*\x84\x01\n" +
 	"\rPaymentStatus\x12\x1e\n" +
 	"\x1aPAYMENT_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16PAYMENT_STATUS_PENDING\x10\x01\x12\x1c\n" +
 	"\x18PAYMENT_STATUS_CONFIRMED\x10\x02\x12\x19\n" +
-	"\x15PAYMENT_STATUS_FAILED\x10\x032\xb5\x01\n" +
+	"\x15PAYMENT_STATUS_FAILED\x10\x032\xff\x01\n" +
 	"\x10PaymentV1Service\x12T\n" +
 	"\rCreatePayment\x12 .payment.v1.CreatePaymentRequest\x1a!.payment.v1.CreatePaymentResponse\x12K\n" +
 	"\n" +
-	"GetPayment\x12\x1d.payment.v1.GetPaymentRequest\x1a\x1e.payment.v1.GetPaymentResponseB%Z#pkg/payment/v1/payment_v1;paymentv1b\x06proto3"
+	"GetPayment\x12\x1d.payment.v1.GetPaymentRequest\x1a\x1e.payment.v1.GetPaymentResponse\x12H\n" +
+	"\vMakePayment\x12\x1e.payment.v1.MakePaymentRequest\x1a\x19.payment.v1.EmptyResponseB%Z#pkg/payment/v1/payment_v1;paymentv1b\x06proto3"
 
 var (
 	file_payment_v1_proto_rawDescOnce sync.Once
@@ -379,27 +464,31 @@ func file_payment_v1_proto_rawDescGZIP() []byte {
 }
 
 var file_payment_v1_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_payment_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_payment_v1_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_payment_v1_proto_goTypes = []any{
 	(PaymentStatus)(0),            // 0: payment.v1.PaymentStatus
 	(*CreatePaymentRequest)(nil),  // 1: payment.v1.CreatePaymentRequest
 	(*CreatePaymentResponse)(nil), // 2: payment.v1.CreatePaymentResponse
 	(*GetPaymentRequest)(nil),     // 3: payment.v1.GetPaymentRequest
 	(*GetPaymentResponse)(nil),    // 4: payment.v1.GetPaymentResponse
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*MakePaymentRequest)(nil),    // 5: payment.v1.MakePaymentRequest
+	(*EmptyResponse)(nil),         // 6: payment.v1.EmptyResponse
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
 var file_payment_v1_proto_depIdxs = []int32{
 	0, // 0: payment.v1.CreatePaymentResponse.status:type_name -> payment.v1.PaymentStatus
-	5, // 1: payment.v1.CreatePaymentResponse.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: payment.v1.CreatePaymentResponse.created_at:type_name -> google.protobuf.Timestamp
 	0, // 2: payment.v1.GetPaymentResponse.status:type_name -> payment.v1.PaymentStatus
-	5, // 3: payment.v1.GetPaymentResponse.created_at:type_name -> google.protobuf.Timestamp
-	5, // 4: payment.v1.GetPaymentResponse.confirmed_at:type_name -> google.protobuf.Timestamp
+	7, // 3: payment.v1.GetPaymentResponse.created_at:type_name -> google.protobuf.Timestamp
+	7, // 4: payment.v1.GetPaymentResponse.confirmed_at:type_name -> google.protobuf.Timestamp
 	1, // 5: payment.v1.PaymentV1Service.CreatePayment:input_type -> payment.v1.CreatePaymentRequest
 	3, // 6: payment.v1.PaymentV1Service.GetPayment:input_type -> payment.v1.GetPaymentRequest
-	2, // 7: payment.v1.PaymentV1Service.CreatePayment:output_type -> payment.v1.CreatePaymentResponse
-	4, // 8: payment.v1.PaymentV1Service.GetPayment:output_type -> payment.v1.GetPaymentResponse
-	7, // [7:9] is the sub-list for method output_type
-	5, // [5:7] is the sub-list for method input_type
+	5, // 7: payment.v1.PaymentV1Service.MakePayment:input_type -> payment.v1.MakePaymentRequest
+	2, // 8: payment.v1.PaymentV1Service.CreatePayment:output_type -> payment.v1.CreatePaymentResponse
+	4, // 9: payment.v1.PaymentV1Service.GetPayment:output_type -> payment.v1.GetPaymentResponse
+	6, // 10: payment.v1.PaymentV1Service.MakePayment:output_type -> payment.v1.EmptyResponse
+	8, // [8:11] is the sub-list for method output_type
+	5, // [5:8] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
 	5, // [5:5] is the sub-list for extension extendee
 	0, // [0:5] is the sub-list for field type_name
@@ -416,7 +505,7 @@ func file_payment_v1_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_payment_v1_proto_rawDesc), len(file_payment_v1_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
